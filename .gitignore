@@ -3,9 +3,11 @@ venv/
 venv/*
 /venv/*
 
-/__pycache/
-/__pycache/*
-/__pycache/*/*
+__pycache__/
+/__pycache__
+/__pycache__/
+/__pycache__/*
+/__pycache__/*/*
 
 /*.pyc
 /*/*.pyc
