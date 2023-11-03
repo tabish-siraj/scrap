@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="container">
-    <h1>Smart Kabadiya</h1>
+    <h1 class="my-5">Smart Kabadiya</h1>
 
     {% csrf_token %}
 
@@ -11,7 +11,7 @@
         <div class="col-6">
             <div class="card text-bg-dark">
                 <img src="{% static 'warehouse.jpg' %}" class="card-img" alt="...">
-                <div class="card-img-overlay">
+                <div class="card-img-overlay text-center text-dark">
                   <h5 class="card-title">Card title</h5>
                   <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                   <p class="card-text"><small>Last updated 3 mins ago</small></p>
@@ -20,26 +20,43 @@
         </div>
 
         <div class="col-6">
-            <form method="POST">
+            <h2 class="mb-3">Sell your scrap by registering here</h2>
+            <form method="POST" class="mx-auto w-75 shadow p-3 mb-5 bg-body rounded">
+                <h3 class="mb-3">Register</h3>
+                {% csrf_token %}
+                <div class="row justify-content-center">
+                    <div class="mb-3 col-6">
+                        <label for="firstname" class="form-label">First name</label>
+                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First name" required>
+                    </div>
+                    <div class="mb-3 col-6">
+                        <label for="lastname" class="form-label">Last name</label>
+                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last name" required>
+                    </div>
+                </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" placeholder="Email" required>
                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                 </div>
                 <div class="mb-3">
-                    <label for="retype-password" class="form-label">Re-type Password</label>
-                    <input type="password" class="form-control" id="retype-password">
+                    <label for="retype-password" class="form-label">Retype Password</label>
+                    <input type="password" class="form-control" id="retype-password" name="retype-password" placeholder="Retype password" required>
                 </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="remember-me">
                     <label class="form-check-label" for="remember-me">Agree to the terms and conditions</label>
                 </div>
-                <button type="submit" class="btn btn-success">Register</button>
+                <div class="mb-3 d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success">Register</button>
+                    <div class="text-center"><a href="{% url 'login' %}">Already registered? Login</a></div>
+                </div>
             </form>
+            <!-- if already registered -->
         </div>
     </div>
 
