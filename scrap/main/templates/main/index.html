@@ -5,9 +5,9 @@
 
 <div class="container">
     {% if request.user.is_authenticated %}
-    <h2>Logged in successfully with email {{request.user.email}}</h2>
+    <h2 class="green2">Logged in successfully with email {{request.user.email}}</h2>
     {% else %}
-    <h2>Not logged in</h2>
+    <h2 class="green1">Not logged in</h2>
     {% endif %}
 </div>
 {% endblock content %}

@@ -1,0 +1,119 @@
+/* .green1{
+    color: #8A9A5B !important;
+}
+
+.green2{
+    color:#8DA468 !important;
+}
+
+.greyish{
+    color:#5B6F7C !important;
+}
+
+.skinnish{
+    color:#D1B180 !important;
+}
+
+.pinkish{
+    color: #C08081 !important;
+}
+
+.green1-background{
+    background-color: #8A9A5B !important;
+}
+
+.green2-background{
+    background-color:#8DA468 !important;
+}
+
+.greyish-background{
+    background-color:#5B6F7C !important;
+}
+
+.skinnish-background{
+    background-color:#D1B180 !important;
+}
+
+.pinkish-background{
+    background-color: #C08081 !important;
+} */
+
+/* Override Bootstrap's default link color with Dusty Rose */
+a {
+    color: #C08081;
+  }
+  
+  /* Use Sandstone as the background color for the body */
+  body {
+  }
+  
+  /* Override Bootstrap's default button styles with Sage Green */
+  /* .btn {
+    background-color: #8DA468;
+    border-color: #8DA468;
+    color: #fff;
+  } */
+  .btn-outline {
+    border-color: #8DA468 !important;
+    color: #8DA468 !important;
+    background-color: #fff !important;
+  }
+  /* Style the button hover state */
+  /* .btn:hover {
+    background-color: #789957; 
+    border-color: #789957; 
+  } */
+  
+  .btn-outline:hover {
+    background-color: #789957 !important; /* Adjust the hover color as needed */
+    border-color: #789957 !important; /* Adjust the hover color as needed */
+    color: #fff !important;
+  }
+  /* Use Moss Green for additional button styles or elements */
+  .btn-secondary {
+    background-color: #8A9A5B;
+    border-color: #8A9A5B;
+    color: #fff;
+  }
+  
+  /* Style the Moss Green button hover state */
+  .btn-secondary:hover {
+    background-color: #78824D; /* Adjust the hover color as needed */
+    border-color: #78824D; /* Adjust the hover color as needed */
+  }
+  
+  /* Set Slate Gray as the text color */
+  body, p, h1, h2, h3, h4, h5, h6 {
+    color: #5B6F7C;
+  }
+  
+  /* Customize the Bootstrap navbar with your colors */
+  .navbar {
+    /* background-color: #5B6F7C; */
+    background-color: #D1B180;
+
+  }
+  
+  /* Style links within the navbar */
+  .navbar a {
+    color: #fff;
+  }
+  
+  /* Customize the active state of navbar links */
+  .navbar a.active,
+  .navbar a:hover {
+    color: #D1B180;
+    text-shadow: #CDA871;
+  }
+  
+  /* Adjust the border color for form elements */
+  .form-control {
+    border-color: #8DA468;
+  }
+  
+  /* Style form element focus state */
+  .form-control:focus {
+    border-color: #D1B180 2px solid;
+    box-shadow: 0 0 0 0.2rem rgba(141, 164, 104, 0.25);
+  }
+  
