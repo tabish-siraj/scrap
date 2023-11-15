@@ -2,6 +2,7 @@ body{
   /* background-color: #a1ab98; */
   /* background: linear-gradient(to top left, #C08081, #D1B180, #5B6F7C, #8DA468, #8A9A5B); */
   color: #81a448;
+  background-color: #e4f6c9;
 
 }
 a {
@@ -39,11 +40,12 @@ h3,
 h4,
 h5,
 h6 {
-  color: #5b6f7c;
+  /* color: #5b6f7c; */
+  color: #8da468;
 }
 
 .navbar {
-  background-color: #f0fde5 !important;
+  background-color: #f5ffed !important;
 }
 
 .navbar a {
@@ -52,9 +54,18 @@ h6 {
 
 .navbar a.active,
 .navbar a:hover {
-  color: #81a448 !important;
-  text-shadow: #81a448 !important;
+  color: #fff;
+  text-shadow: #81a448;
 }
+
+.nav-link{
+  color: #81a448 !important;
+}
+.nav-link:hover{
+  color: #93b163 !important;
+  text-decoration: underline;
+}
+
 
 .navbar-brand{
   font-size:x-large;
@@ -67,4 +78,13 @@ h6 {
 .form-control:focus {
   /* border-color: #d1b180 2px solid; */
   box-shadow: 0 0 0 0.2rem rgba(126, 175, 47, 0.25);
+}
+
+
+/* Define a custom shadow class */
+.shadow-green {
+  /* box-shadow: 0 4px 6px rgba(0, 255, 0, 0.2), 0 0 1px 3px rgba(0, 255, 0, 0.2);
+   */
+  box-shadow: 0 0 2rem rgba(131, 171, 68, 0.25);
+
 }
