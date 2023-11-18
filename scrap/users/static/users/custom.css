@@ -8,6 +8,17 @@ body{
 a {
   color: #C08081;
 }
+input[type="checkbox"]:focus {
+  border: 1px solid #5cb85c;
+  box-shadow: 0 0 2rem rgba(131, 171, 68, 0.8);
+
+}
+input[type="checkbox"]:checked {
+  background-color: #5cb85c; 
+  border: 1px solid #5cb85c;
+  color: #fff; 
+
+}
 
 .btn-outline {
   color: #8da468;
@@ -54,25 +65,24 @@ h6 {
   background-color: #f5ffed !important;
 }
 
-.navbar a{
+
+.nav-link{
   color: #81a448;
 }
-
-.navbar a.active,
-.navbar a:hover {
+.nav-link:hover{
   color: #93b163;
   text-shadow: #81a448;
   text-decoration: underline;
-
 }
-
 
 .navbar-brand{
   font-size:x-large;
-  color: #93b163;
+  color: #81a448;
 }
 
 .navbar-brand:hover{
+  color: #93b163;
+  text-shadow: #81a448;
   text-decoration: none !important;
 }
 
@@ -89,6 +99,9 @@ h6 {
 .shadow-green {
   box-shadow: 0 0 2rem rgba(131, 171, 68, 0.25);
 
+}
+.text-shadow{
+    text-shadow: 2px 2px #f5ffed;
 }
 
 .card{
