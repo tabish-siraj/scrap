@@ -21,15 +21,21 @@ a {
   border-color: #789957;
 }
 
-.btn-secondary {
+.btn-second {
   background-color: #8a9a5b;
   border-color: #8a9a5b;
   color: #fff;
 }
 
-.btn-secondary:hover {
-  background-color: #78824d;
-  border-color: #78824d;
+.btn-second:hover {
+  color: #FFF !important;
+  background-color: #78824d !important;
+  /* border-color: #78824d; */
+}
+.btn-second:active {
+  color: #FFF !important;
+  background-color: #78824d !important;
+  /* border-color: #78824d; */
 }
 
 body,
@@ -48,28 +54,28 @@ h6 {
   background-color: #f5ffed !important;
 }
 
-.navbar a {
-  color: #8da468;
+.navbar a{
+  color: #81a448;
 }
 
 .navbar a.active,
 .navbar a:hover {
-  color: #fff;
+  color: #93b163;
   text-shadow: #81a448;
-}
-
-.nav-link{
-  color: #81a448 !important;
-}
-.nav-link:hover{
-  color: #93b163 !important;
   text-decoration: underline;
+
 }
 
 
 .navbar-brand{
   font-size:x-large;
+  color: #93b163;
 }
+
+.navbar-brand:hover{
+  text-decoration: none !important;
+}
+
 
 .form-control {
   border-color: #8da468;
@@ -80,11 +86,72 @@ h6 {
   box-shadow: 0 0 0 0.2rem rgba(126, 175, 47, 0.25);
 }
 
-
-/* Define a custom shadow class */
 .shadow-green {
-  /* box-shadow: 0 4px 6px rgba(0, 255, 0, 0.2), 0 0 1px 3px rgba(0, 255, 0, 0.2);
-   */
   box-shadow: 0 0 2rem rgba(131, 171, 68, 0.25);
 
+}
+
+.card{
+  background-color: transparent;
+  border: none;
+  box-shadow: 0 0 2rem rgba(131, 171, 68, 0.25);
+  height: auto;
+}
+.card p{
+  font-size: larger;
+  color: #777;
+}
+
+.section.how-it-works, .section.pricing, .section.contact-us{
+  background: #24382C;
+}
+
+.section.how-it-works .card{
+  color: #FFF;
+  border: 3px solid #FFF;
+  border-radius: 20px;
+  box-shadow: 0 0 2rem rgba(147, 160, 126, 0.25);
+}
+
+.section.how-it-works h1, .section.how-it-works h3{
+  color: #FFF;
+}
+
+.section.how-it-works .card p{
+  color: #FFF;
+}
+
+.vl {
+  border-left: 3px solid #FFF;
+  height: 100%;
+}
+
+.section.pricing table{
+  font-size: x-large;
+  font-weight: normal;
+  background-color: transparent;
+}
+.section.pricing table tr td{
+  color: #FFF;
+  background-color: transparent;
+}
+
+/* ACCORDION */
+
+.accordion-button {
+  background-color: #93b163; 
+  color: #FFE;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+}
+
+.accordion-button[aria-expanded="true"] {
+  background-color: #93b163;
+  color: #FFE;
+}
+
+.accordion-button[aria-expanded="true"] .accordion-body{
+  background-color: purple;
 }

@@ -4,8 +4,9 @@
 {% block content %}
 
 <div class="container d-flex">
-    <div class="col-5 mt-5 ms-5">
-        <p class="fs-1"><span class="fw-bold">RECYCLE, RENEW, REUSE......</span><br>Because it's more than<br>just scrap!</p>
+    <div class="col-5 my-auto">
+        <p class="fs-1"><span class="fw-bold">RECYCLE, RENEW, REUSE......</span><br>Because it's more than<br>just
+            scrap!</p>
     </div>
     <div class="col-2">
     </div>
@@ -19,7 +20,8 @@
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                    required>
             </div>
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="remember-me">
@@ -28,8 +30,469 @@
             <div class="mb-3">
                 <a href="{% url 'forgot-password' %}">Forgot password?</a>
             </div>
-            <button type="submit" class="btn btn-secondary">Submit</button>
+            <button type="submit" class="btn btn-second">Submit</button>
         </form>
     </div>
 </div>
+
+<div class="container">
+    <div class="row d-flex justify-content-between my-5 card-group align-items-stretch">
+        <div class="col-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <!-- Putting an svg in the card-title -->
+                    <h3 class="card-title">
+                        <object type="image/svg+xml" data="{% static 'svgs/tick.svg' %}">
+                            Your browser does not support SVG
+                        </object><br>
+                        Convenience
+                    </h3>
+                    <p class="card-text">We make scrap collection effortless. You call, we collect - it's that simple.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <!-- Putting an svg in the card-title -->
+                    <h3 class="card-title">
+                        <object type="image/svg+xml" data="{% static 'svgs/tick.svg' %}">
+                            Your browser does not support SVG
+                        </object><br>
+                        Transparency
+                    </h3>
+                    <p class="card-text">Our pricing is fair and transparent, with no hidden costs.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <!-- Putting an svg in the card-title -->
+                    <h3 class="card-title">
+                        <object type="image/svg+xml" data="{% static 'svgs/tick.svg' %}">
+                            Your browser does not support SVG
+                        </object><br>
+                        Community Impact
+                    </h3>
+                    <p class="card-text">By choosing us, you're not only decluttering your space but also contributing
+                        to a more sustainable future.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <!-- Putting an svg in the card-title -->
+                    <h3 class="card-title">
+                        <object type="image/svg+xml" data="{% static 'svgs/tick.svg' %}">
+                            Your browser does not support SVG
+                        </object><br>
+                        Easy and Reliable
+                    </h3>
+                    <p class="card-text">It's really easy to follow all the steps, and it is trusted by many customers
+                        as well.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="section how-it-works mb-5">
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center mt-5">How it works</h1>
+                <h3 class="text-center mb-5">
+                    "Join us in simplifying scrap disposal, promoting sustainability, and redefining<br>recycling for a brighter future."
+                </h3>
+                <div class="row mt-5">
+                    <div class="col-1 d-flex flex-column align-items-center">
+                        <div class="vl"></div>
+                        <object type="image/svg+xml" data="{% static 'svgs/one.svg' %}"></object>
+                        <div class="vl"></div>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-10">
+                        <div class="card mb-3 p-3 ">
+                            <div class="row g-0">
+                              <div class="col-md-4 ">
+                                <object data="{% static 'svgs/how-it-works1.svg' %}" type="image/svg+xml" height="100%"></object>
+                                <!-- <img src="{% static 'svgs/how-it-works1.svg' %}" class="img-fluid rounded-start" alt="..."> -->
+                              </div>
+                              <div class="col-md-8">
+                                <div class="card-body">
+                                  <h1 class="card-title">Book an appointment</h1>
+                                  <p class="card-text fs-4" style="text-align: justify;">Easily schedule a scrap pick-up by visiting our website or using our user-friendly app. With just a few clicks, you can set a date and time that works for you and provide your location details. We've made the booking process simple and convenient for you</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-1 d-flex flex-column align-items-center">
+                        <div class="vl"></div>
+                        <object type="image/svg+xml" data="{% static 'svgs/two.svg' %}"></object>
+                        <div class="vl"></div>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-10">
+                        <div class="card mb-3 h-100 p-3">
+                            <div class="row g-0">
+                              <div class="col-md-4">
+                                <object data="{% static 'svgs/how-it-works2.svg' %}" type="image/svg+xml" height="100%"></object>
+                                <!-- <img src="{% static 'svgs/how-it-works1.svg' %}" class="img-fluid rounded-start" alt="..."> -->
+                              </div>
+                              <div class="col-md-8">
+                                <div class="card-body">
+                                  <h1 class="card-title">Scrap Pick-Up and Evaluation</h1>
+                                  <p class="card-text fs-4" style="text-align: justify;">
+                                    Our team will promptly arrive at your location to collect your scrap. We ensure a fair evaluation and measurement process, guaranteeing that you receive the right compensation for your materials. Transparency and fairness are at the core of our service.
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-1 d-flex flex-column align-items-center">
+                        <div class="vl"></div>
+                        <object type="image/svg+xml" data="{% static 'svgs/three.svg' %}"></object>
+                        <div class="vl"></div>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-10">
+                        <div class="card mb-3 h-100 p-3">
+                            <div class="row g-0">
+                              <div class="col-md-4">
+                                <object data="{% static 'svgs/how-it-works3.svg' %}" type="image/svg+xml" height="100%"></object>
+                                <!-- <img src="{% static 'svgs/how-it-works1.svg' %}" class="img-fluid rounded-start" alt="..."> -->
+                              </div>
+                              <div class="col-md-8">
+                                <div class="card-body">
+                                  <h1 class="card-title">Payment and Compensation
+                                </h1>
+                                  <p class="card-text fs-4" style="text-align: justify;">Your compensation is straightforward and efficient. We offer various payment options, including cash, credit, or others, ensuring you're compensated in a way that suits you. Our payment system is designed with transparency in mind.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-1 d-flex flex-column align-items-center">
+                        <div class="vl"></div>
+                        <object type="image/svg+xml" data="{% static 'svgs/four.svg' %}"></object>
+                        <div class="vl"></div>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-10">
+                        <div class="card mb-3 h-100 p-3">
+                            <div class="row g-0">
+                              <div class="col-md-4">
+                                <object data="{% static 'svgs/how-it-works4.svg' %}" type="image/svg+xml" height="100%"></object>
+                                <!-- <img src="{% static 'svgs/how-it-works1.svg' %}" class="img-fluid rounded-start" alt="..."> -->
+                              </div>
+                              <div class="col-md-8">
+                                <div class="card-body">
+                                  <h1 class="card-title">Sorting and Recycling</h1>
+                                  <p class="card-text fs-4" style="text-align: justify;">Once your scrap is collected, it's transported to our state-of-the-art warehouse, where our experts sort it into recyclable and sellable materials. We're dedicated to eco-friendly practices that benefit the environment.</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-1 d-flex flex-column align-items-center">
+                        <div class="vl"></div>
+                        <object type="image/svg+xml" data="{% static 'svgs/five.svg' %}"></object>
+                        <div class="vl"></div>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-10">
+                        <div class="card mb-3 h-100 p-3">
+                            <div class="row g-0">
+                              <div class="col-md-4">
+                                <object data="{% static 'svgs/how-it-works5.svg' %}" type="image/svg+xml" height="100%"></object>
+                                <!-- <img src="{% static 'svgs/how-it-works1.svg' %}" class="img-fluid rounded-start" alt="..."> -->
+                              </div>
+                              <div class="col-md-8">
+                                <div class="card-body">
+                                  <h1 class="card-title">Delivery to Recyclers</h1>
+                                  <p class="card-text fs-4" style="text-align: justify;">The sorted materials are then delivered to our trusted recycling partners. This ensures that your scrap doesn't end up in a landfill and contributes to a cleaner, more sustainable environment. By using our service, you're actively participating in the recycling process and making a positive impact.</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section our-mission p-5 mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center mb-4">Our Mission<br><br>
+                    "Your Scrap, Our Mission: Cleaner,<br>Greener, Smarter Recycling"
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text-center fs-3">We are committed to reducing waste and promoting environmental sustainability. Our mission is to make recycling a more sustainable and responsible process. At Scrap Smart, we are passionate about turning waste into opportunity. We believe that every piece of scrap has the potential for a second life, and it all starts with you.
+                    Our mission is simple yet powerful: to provide a hassle-free and environmentally responsible solution for the collection and recycling of scrap materials. We aim to make the process of giving or selling your scrap convenient, efficient, and rewarding.</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <img src="{% static 'banner2.png' %}" class="img-fluid rounded shadow" width="100%">
+        <h1 class="text-center my-5">Scrap Smart... recycle with ease</h1>
+        <img src="{% static 'banner3.jpg' %}" class="img-fluid rounded shadow" width="100%">
+    </div>
+</section>
+
+<section class="section pricing p-5 mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center mb-2">PRICING</h1>
+                <p class="text-center fs-4 mb-3 text-white">Here’s the pricing list of today.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-transparent mb-3">
+                    <h3 class="mb-4 text-white">RATE LIST</h3>
+                        <tr class="text-center">
+                            <td class="border-end">IRON</td>
+                            <td>240/KG</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td class="border-end">COPPER</td>
+                            <td>400/KG</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td class="border-end">PAPER</td>
+                            <td>150/KG</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td class="border-end">PLASTIC</td>
+                            <td>180/KG</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td class="border-end">RUBBER</td>
+                            <td>110/KG</td>
+                        </tr>
+                </table>
+                <p class="fs-4 text-end text-white">Pricing is in PKR</p>
+
+            </div>
+        </div>
+</section>
+
+<section class="section faq p-5 mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center text-dark mb-5">Frequently Asked Question</h1>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <!-- Question 1 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                How do I schedule a scrap pick-up appointment?
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                             data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                Scheduling an appointment is easy! Visit our website or use our user-friendly app to select a date
+                                and time that suits you, and provide your location details. Our team will take care of the rest.
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Question 2 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                What types of scrap materials do you accept?
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                             data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                We accept a wide range of scrap materials, including metal, paper, cardboard, plastic, and more.
+                                If you have any specific questions about the materials you want to recycle, feel free to contact
+                                us for clarification.
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Question 3 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                How is the scrap evaluated, and how do I get compensated?
+                            </button>
+                        </h2>
+                        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+                             data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                Our team evaluates the scrap on the spot. We use transparent and fair measurements to determine the
+                                value of your materials. You can choose from various payment methods, including cash, credit, or other
+                                options, to receive your compensation.
+                            </div>
+                    </div>
+                    </div>
+                
+                    <!-- Question 4 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                                What happens to the scrap after collection?
+                            </button>
+                        </h2>
+                        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
+                             data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                Collected scrap is transported to our advanced sorting facility. Here, it is categorized into
+                                recyclable and sellable materials. We are committed to eco-friendly practices, ensuring your scrap
+                                is responsibly processed.
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Question 5 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                                What is the impact of my recycling efforts?
+                            </button>
+                        </h2>
+                        <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive"
+                             data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                By using our service, you're actively contributing to a cleaner, more sustainable future. Your scrap
+                                doesn't end up in a landfill but is delivered to trusted recycling partners. Together, we make a
+                                significant positive impact on the environment.
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Question 6 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingSix">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                                Do you charge for pick-up services?
+                            </button>
+                        </h2>
+                        <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix"
+                             data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                Our pick-up services are typically free, but the specific terms may vary based on location and the
+                                quantity of materials. Contact us for details about pick-up charges in your area.
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Question 7 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingSeven">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
+                                Can I schedule recurring pick-ups?
+                            </button>
+                        </h2>
+                        <div id="flush-collapseSeven" class="accordion-collapse collapse" aria-labelledby="flush-headingSeven"
+                             data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                Yes, we offer the option to schedule recurring pick-ups to make recycling even more convenient for you.
+                                Simply let us know your preferred frequency, and we'll ensure a hassle-free experience.
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Question 8 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingEight">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseEight">
+                                How can I get in touch with your team for inquiries or assistance?
+                            </button>
+                        </h2>
+                        <div id="flush-collapseEight" class="accordion-collapse collapse" aria-labelledby="flush-headingEight"
+                             data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                You can reach our customer support team through the contact information provided on our website or app.
+                                We're here to answer your questions and assist you in any way we can.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex flex-column align-items-center">
+                <h1 class="text-dark">
+                    Have more questions?
+                </h1>
+                <p class="fs-3">Just reach out, we’re always around to answer any questions.</p>
+                <button class="btn btn-second text-center">Contact us</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section contact-us p-5">
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-12 d-flex flex-column align-items-center">
+                <h1>CONTACT US</h1>
+                <p class="fs-4 text-white">It only takes a few minutes to scrap smartly.</p>
+                <hr class="w-50 bg-dark">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <form method="POST" class="p-5 shadow">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" name="message" placeholder="Message"
+                                  required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-second text-center">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}
