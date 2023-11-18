@@ -49,6 +49,15 @@ input[type="checkbox"]:checked {
   /* border-color: #78824d; */
 }
 
+.form-select{
+  border: 2px solid #8da468;
+}
+
+.form-select:focus{
+  box-shadow: 0 0 2rem rgba(131, 171, 68, 0.2);
+  border: 2px solid #8da468;
+}
+
 body,
 p,
 h1,
@@ -69,7 +78,7 @@ h6 {
 .nav-link{
   color: #81a448;
 }
-.nav-link:hover{
+.nav-link:hover, .nav-link:active{
   color: #93b163;
   text-shadow: #81a448;
   text-decoration: underline;
@@ -86,6 +95,19 @@ h6 {
   text-decoration: none !important;
 }
 
+a.dropdown-item{
+  color: #81a448;
+}
+a.dropdown-toggle:hover, a.dropdown-toggle:focus{
+  color: #93b163;
+  text-shadow: #81a448;
+}
+
+a.dropdown-item:hover, a.dropdown-item:focus{
+  background-color: #EEF2E6;
+  color: #93b163;
+  text-shadow: #81a448;
+}
 
 .form-control {
   border-color: #8da468;
@@ -167,4 +189,13 @@ h6 {
 
 .accordion-button[aria-expanded="true"] .accordion-body{
   background-color: purple;
+}
+
+#scrollToTopBtn {
+  background-color: #24382C;
+  color: #FFF;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: block;
 }

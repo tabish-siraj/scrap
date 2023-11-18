@@ -7,12 +7,13 @@
     <div class="col-5 my-auto">
         <p class="fs-1"><span class="fw-bold">RECYCLE, RENEW, REUSE......</span><br>Because it's more than<br>just
             scrap!</p>
+        <a class="btn btn-second my-4">Sell Scrap</a>
     </div>
     <div class="col-2">
     </div>
     <div class="col-5 mt-5 ms-5">
         <form method="POST" name="login" class="p-5 shadow-green"  action="{% url 'login' %}">
-            <h2 class="mb-3">Login</h2>
+            <h2 class="mb-3">Let's Sell...</h2>
             {% csrf_token %}
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
@@ -30,7 +31,7 @@
             <div class="mb-3">
                 <a href="{% url 'forgot-password' %}">Forgot password?</a>
             </div>
-            <button type="submit" class="btn btn-second">Submit</button>
+            <button type="submit" class="btn btn-second">Let's Go</button>
         </form>
     </div>
 </div>
@@ -512,7 +513,7 @@
     </div>
 </section>
 
-<section class="section contact-us p-5 mb-3">
+<section id="contact-us" class="section contact-us p-5 mb-3">
     <div class="container">
         <div class="row mb-3">
             <div class="col-12 d-flex flex-column align-items-center">
