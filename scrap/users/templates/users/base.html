@@ -25,31 +25,41 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link"href="#how-it-works">HOW IT WORKS</a>
+              <a class="nav-link"href="{% url "index" %}#how-it-works">HOW IT WORKS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link"href="#our-mission">VISION</a>
+              <a class="nav-link"href="{% url "index" %}#our-mission">VISION</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link"href="#pricing">RATE LIST</a>
+              <a class="nav-link"href="{% url "index" %}#pricing">RATE LIST</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link"href="#faq">FAQ</a>
+              <a class="nav-link"href="{% url "index" %}#faq">FAQ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link"href="#contact-us">CONTACT US</a>
+              <a class="nav-link"href="{% url "index" %}#contact-us">CONTACT US</a>
             </li>
           </ul>
           {% if user.is_authenticated %} 
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {{user.email}}
+                {% if user.get_full_name %}
+                {{user.get_full_name}}
+                {% else %}
+                Please update your name.
+                {% endif %}
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Dashboard</a></li>
-                <li><a class="dropdown-item" href="#">Sell Scrap</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
+                {% if user.is_customer %}
+                <li><a class="dropdown-item" href="{% url "customer_index" %}">DASHBOARD</a></li>
+                <li><a class="dropdown-item" href="{% url "customer_index" %}">BOOK AN APPOINTMENT</a></li>
+                <li><a class="dropdown-item" href="{% url "customer_index" %}">EDIT PROFILE</a></li>
+                {% else %}                
+                <li><a class="dropdown-item" href="{% url "employee_index" %}">DASHBOARD</a></li>
+                <li><a class="dropdown-item" href="{% url "employee_index" %}">CURRENT APPOINTMENT</a></li>
+                <li><a class="dropdown-item" href="{% url "employee_index" %}">EDIT PROFILE</a></li>
+                {% endif %}
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
               </ul>

@@ -12,6 +12,7 @@
     <div class="col-2">
     </div>
     <div class="col-5 mt-5 ms-5">
+        {% if not user.is_authenticated %}
         <form method="POST" name="login" class="p-5 shadow-green"  action="{% url 'login' %}">
             <h2 class="mb-3">Let's Sell...</h2>
             {% csrf_token %}
@@ -33,6 +34,8 @@
             </div>
             <button type="submit" class="btn btn-second">Let's Go</button>
         </form>
+        {% endif %}
+
     </div>
 </div>
 

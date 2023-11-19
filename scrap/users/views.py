@@ -10,16 +10,18 @@ def register_controller(request):
         firstname = request.POST.get("firstname")
         lastname = request.POST.get("lastname")
         email = request.POST.get("email")
+        user_type = request.POST.get("user_type")
         password = request.POST.get("password")
 
+        if User.objects.filter(email=email).exists():
+            return render(request, "users/register.html", {"error": "Email already exists"})
+
         user = User.objects.create_user(
-            first_name=firstname, last_name=lastname, email=email, password=password
+            first_name=firstname, last_name=lastname, email=email, user_type=user_type, password=password
         )
-
         user.save()
-
-        return render(request, "users/register.html")
-
+        if user:
+            return render(request, "users/register.html", {"success": "Account created successfully. Please login to continue."})
     return render(request, "users/register.html")
 
 
@@ -32,6 +34,12 @@ def login_controller(request):
 
         if user is not None:
             login(request, user)
+
+            if user.user_type == "customer":
+                return redirect("/customer")
+            elif user.user_type == "employee":
+                return redirect("/employee")
+
             return redirect("/")
     return render(request, "users/login.html")
 
