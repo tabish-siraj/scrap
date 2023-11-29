@@ -53,8 +53,8 @@
               <ul class="dropdown-menu">
                 {% if user.is_customer %}
                 <li><a class="dropdown-item" href="{% url "customer_index" %}">DASHBOARD</a></li>
-                <li><a class="dropdown-item" href="{% url "customer_index" %}">BOOK AN APPOINTMENT</a></li>
-                <li><a class="dropdown-item" href="{% url "customer_index" %}">EDIT PROFILE</a></li>
+                <li><a class="dropdown-item" href="{% url "create_appointment" %}">BOOK AN APPOINTMENT</a></li>
+                <li><a class="dropdown-item" href="{% url "customer_edit_profile" %}">EDIT PROFILE</a></li>
                 {% else %}                
                 <li><a class="dropdown-item" href="{% url "employee_index" %}">DASHBOARD</a></li>
                 <li><a class="dropdown-item" href="{% url "employee_index" %}">CURRENT APPOINTMENT</a></li>

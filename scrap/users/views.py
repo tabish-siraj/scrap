@@ -1,4 +1,5 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import render, HttpResponseRedirect
+from django.urls import reverse
 from .models import User
 from django.contrib.auth import authenticate, login, logout
 
@@ -35,12 +36,14 @@ def login_controller(request):
         if user is not None:
             login(request, user)
 
+        if request.user.is_authenticated:
             if user.user_type == "customer":
-                return redirect("/customer")
+                return HttpResponseRedirect(reverse('customer_index'))
             elif user.user_type == "employee":
-                return redirect("/employee")
+                return HttpResponseRedirect(reverse('employee_index'))
 
-            return redirect("/")
+
+            # return redirect("/")
     return render(request, "users/login.html")
 
 
@@ -49,4 +52,4 @@ def forgot_password_controller(request):
 
 def logout_controller(request):
     logout(request)
-    return redirect("/")
+    return HttpResponseRedirect(reverse("index"))

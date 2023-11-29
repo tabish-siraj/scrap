@@ -45,14 +45,16 @@ class User(AbstractUser):
 
 class PersonalDetails(TimestampedModel):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    phone_number = models.CharField(max_length=13)
     mobile_number = models.CharField(max_length=13)
-    addres1 = models.CharField(max_length=100, default="")
-    addres2 = models.CharField(max_length=100, null=True, blank=True)
-    city = models.CharField(max_length=50)
-    state = models.CharField(max_length=50)
-    country = models.CharField(max_length=50)
+    address1 = models.CharField(max_length=100, null=True, blank=True)
+    address2 = models.CharField(max_length=100, null=True, blank=True)
+    city = models.CharField(max_length=50, null=True, blank=True)
+    state = models.CharField(max_length=50, null=True, blank=True)
+    country = models.CharField(max_length=50, null=True, blank=True)
     cnic = models.CharField(max_length=15, null=True, blank=True)
     vehicle_no = models.CharField(max_length=15, null=True, blank=True)
-    vehicle_type = models.CharField(max_length=13, null=True, blank=True, choices=[(tag.name, tag.value) for tag in VehicleType], default=VehicleType.TWO_WHEELER.value)
-    status = models.BooleanField(default=False)
+    vehicle_type = models.CharField(max_length=13, null=True, blank=True, choices=[(tag.name, tag.value) for tag in VehicleType])
+    status = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.user.email

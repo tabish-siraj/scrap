@@ -10,11 +10,17 @@ class AppointmentStatus(Enum):
     PENDING = "pending"
     REJECTED = "rejected"
 
+class MaterialUnits(Enum):
+    KILOGRAM = "kilogram"
+    GRAM = "gram"
 
 class Material(TimestampedModel):
     name = models.CharField(max_length=20)
-    unit = models.CharField(max_length=20)
+    unit = models.CharField(max_length=20, choices=[(tag.name, tag.value) for tag in MaterialUnits], default=MaterialUnits.GRAM.value)
     rate = models.FloatField()
+
+    def __str__(self):
+        return f"{self.name} ({self.rate}/{self.unit})"
 
 class Appointment(TimestampedModel):
     customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="customer")
@@ -39,5 +45,6 @@ class Payment(TimestampedModel):
     amount = models.FloatField()
     appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE)
     status = models.BooleanField(default=False)
+    received_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="received_by")
     confirmed_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="confirmed_by")
 
