@@ -39,6 +39,7 @@ class Appointment(TimestampedModel):
 class Order(TimestampedModel):
     material = models.ForeignKey(Material, on_delete=models.CASCADE)
     quantity = models.IntegerField()
+    amount = models.FloatField()
     appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE)
 
 class Payment(TimestampedModel):

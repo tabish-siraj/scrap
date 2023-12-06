@@ -58,9 +58,35 @@ def customer_edit_profile(request):
 
 def create_appointment(request):
     materials = Material.objects.all()
+    personal_detail = PersonalDetails.objects.filter(user=request.user).first()
     context = {}
 
+    if request.method == "POST":
+        customer = request.user
+        address = request.POST['address']
+        city = request.POST['city']
+        state = request.POST['state']
+        country = request.POST['country']
+        contact = request.POST['contact']
+        description = request.POST['description']
+        date = request.POST['date']
+        time = request.POST['time']
+
+        # Appointment.objects.create(
+        #     customer=customer,
+        #     address=address,
+        #     city=city,
+        #     state=state,
+        #     country=country,
+        #     contact=contact,
+        #     description=description,
+        #     date=date,
+        #     time=time
+        # )
+        print(request.POST)
+
     context.update({
-        'materials': materials
+        'materials': materials,
+        'personal_detail': personal_detail
     })
     return render(request, 'customer/create_appointment.html', context)

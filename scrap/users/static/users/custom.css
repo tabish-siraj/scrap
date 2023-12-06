@@ -199,3 +199,17 @@ a.dropdown-item:hover, a.dropdown-item:focus{
   right: 20px;
   display: block;
 }
+
+.table-transparent {
+  background-color: transparent !important;
+  color: #81a448 !important;
+
+}
+
+.table-transparent th,
+.table-transparent td {
+  /* background-color: rgba(255, 255, 255, 0.5) !important; Adjust the alpha value (fourth parameter) for transparency */
+  background-color: transparent !important; /* Adjust the alpha value (fourth parameter) for transparency */
+  color: #81a448 !important;
+
+}
