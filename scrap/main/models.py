@@ -6,13 +6,17 @@ from enum import Enum
 # Create your models here.
 
 class AppointmentStatus(Enum):
-    EXECUTED = "executed"
     ACTIVE = "active"
+    ACCEPTED = "accepted"
+    COMPLETED = "COMPLETED"
     REJECTED = "rejected"
 
 class MaterialUnits(Enum):
     KILOGRAM = "kilogram"
     GRAM = "gram"
+    POUND= "pound"
+    OUNCE = "ounce"
+    
 
 class Material(TimestampedModel):
     name = models.CharField(max_length=20)
@@ -24,6 +28,7 @@ class Material(TimestampedModel):
 
 class Appointment(TimestampedModel):
     customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="customer")
+    employee = models.ForeignKey(User, on_delete=models.CASCADE, related_name="employee")
     address = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
@@ -37,7 +42,8 @@ class Appointment(TimestampedModel):
 
 class Order(TimestampedModel):
     material = models.ForeignKey(Material, on_delete=models.CASCADE)
-    quantity = models.IntegerField()
+    quantity = models.FloatField()
+    actual_quantity = models.FloatField()    
     amount = models.FloatField()
     appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE)
 

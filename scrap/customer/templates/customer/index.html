@@ -5,7 +5,7 @@
 <div class="container">
 
   <h2>Appointments and Orders Table</h2>
-  <table class="table table-bordered  table-transparent">
+  <table class="table table-bordered">
       <thead>
           <tr>
               <th>Appt. ID</th>
@@ -14,8 +14,9 @@
               <th>Time</th>
               <th>Address</th>
               <th>Material</th>
-              <th>Unit</th>
               <th>Quantity</th>
+              <th>Actual Quantity</th>
+              <th>Unit</th>
               <th>Amount</th>
               <th>Status</th>
           </tr>
@@ -30,8 +31,9 @@
                       <td>{{ appointment.time }}</td>
                       <td>{{ appointment.address }}</td>
                       <td>{{ appointment.material }}</td>
-                      <td>{{ appointment.unit }}</td>
                       <td>{{ appointment.quantity }}</td>
+                      <td>{{ appointment.actual_quantity }}</td>
+                      <td>{{ appointment.unit }}</td>
                       <td>{{ appointment.amount }}</td>
                       <td>{{ appointment.status }}</td>
                   </tr>
