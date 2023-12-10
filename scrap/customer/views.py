@@ -1,11 +1,36 @@
+from django.db import transaction
 from django.shortcuts import render
 from users.models import User, PersonalDetails
-from main.models import Appointment, Material
+from main.models import Appointment, Material,Order
+
+
 
 # Create your views here.
 
 def customer_index(request):
-    return render(request, 'customer/index.html')
+    appointments = Appointment.objects.filter(customer=request.user)
+
+    res = []
+    for appointment in appointments:
+        orders = Order.objects.filter(appointment=appointment).order_by('-created_at')
+        for order in orders:
+            res.append({
+                "id": appointment.id,
+                "description": appointment.description,
+                "date": appointment.date,
+                "time": appointment.time,
+                "address": appointment.address,
+                "material": order.material.name,
+                "unit": order.material.unit,
+                "quantity": order.quantity,
+                "amount": order.amount,
+                "status": appointment.status,
+            })
+
+    context = {
+        "appointments": res
+    }
+    return render(request, 'customer/index.html', context)
 
 def customer_edit_profile(request):
     context = {}
@@ -51,39 +76,60 @@ def customer_edit_profile(request):
     context.update({
         'personal_details': personal_details
     })
-
-    print(context)
         
     return render(request, 'customer/edit_profile.html', context)
 
 def create_appointment(request):
-    materials = Material.objects.all()
-    personal_detail = PersonalDetails.objects.filter(user=request.user).first()
-    context = {}
+    try:
+        with transaction.atomic():
+            materials = Material.objects.all()
+            personal_detail = PersonalDetails.objects.filter(user=request.user).first()
+            context = {}
 
-    if request.method == "POST":
-        customer = request.user
-        address = request.POST['address']
-        city = request.POST['city']
-        state = request.POST['state']
-        country = request.POST['country']
-        contact = request.POST['contact']
-        description = request.POST['description']
-        date = request.POST['date']
-        time = request.POST['time']
+            if request.method == "POST":
+                customer = request.user
+                address = request.POST['address']
+                city = request.POST['city']
+                state = request.POST['state']
+                country = request.POST['country']
+                contact = request.POST['contact']
+                description = request.POST['description']
+                date = request.POST['date']
+                time = request.POST['time']
 
-        # Appointment.objects.create(
-        #     customer=customer,
-        #     address=address,
-        #     city=city,
-        #     state=state,
-        #     country=country,
-        #     contact=contact,
-        #     description=description,
-        #     date=date,
-        #     time=time
-        # )
-        print(request.POST)
+                appointment = Appointment.objects.create(
+                    customer=customer,
+                    address=address,
+                    city=city,
+                    state=state,
+                    country=country,
+                    contact=contact,
+                    description=description,
+                    date=date,
+                    time=time
+                )
+
+                orders = []
+                for i in range(len(materials)):
+                    if request.POST[f'{materials[i].name}_quantity'] == '':
+                        continue
+                    quantity = request.POST[f'{materials[i].name}_quantity']
+                    amount = request.POST[f'{materials[i].name}_total']
+                    order = Order.objects.create(
+                        appointment=appointment,
+                        material=materials[i],
+                        quantity=quantity,
+                        amount=amount
+                    )
+                    orders.append(order)
+                # order = Order.objects.bulk_create(orders)
+    except Exception as e:
+        print(str(e))
+        context['error'] = "Something went wrong"
+    if  appointment is not None and len(orders) > 0:
+        context['success'] = "Appointment created successfully"
+
+
 
     context.update({
         'materials': materials,

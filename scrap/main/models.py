@@ -7,7 +7,7 @@ from enum import Enum
 
 class AppointmentStatus(Enum):
     EXECUTED = "executed"
-    PENDING = "pending"
+    ACTIVE = "active"
     REJECTED = "rejected"
 
 class MaterialUnits(Enum):
@@ -32,8 +32,7 @@ class Appointment(TimestampedModel):
     description = models.TextField()
     date = models.DateField()
     time = models.TimeField()
-    materials = models.ManyToManyField(Material)
-    status = models.CharField(max_length=10, choices=[(tag.name, tag.value) for tag in AppointmentStatus], default=AppointmentStatus.PENDING.value)
+    status = models.CharField(max_length=10, choices=[(tag.name, tag.value) for tag in AppointmentStatus], default=AppointmentStatus.ACTIVE.value)
 
 
 class Order(TimestampedModel):

@@ -20,7 +20,7 @@
                         <td>=</td>
                         
                         <td>
-                            <input type="text" class="form-control total-input" id="{{ material.name }}_total" name="{{ material.name }}_total" placeholder="Total" disabled>
+                            <input type="text" class="form-control total-input" id="{{ material.name }}_total" name="{{ material.name }}_total" placeholder="Total" readonly>
                         </td>
                     </tr>
                 {% endfor %}
@@ -34,14 +34,14 @@
             <label for="description" class="form-label">Description</label>
             <textarea class="form-control" id="description" name="description" rows="3" placeholder="Description"></textarea>
         </div>
-
+        
         <!-- Address -->
         <div class="mb-3">
             <label for="address" class="form-label">Pickup Address</label>
             <input type="text" class="form-control" id="address" name="address" placeholder="Pickup Address">
-        {% comment %} </div> {% endcomment %}
+            
             <div class="form-check mt-2">
-                <input class="form-check-input" type="checkbox" value="" id="same-address">
+                <input class="form-check-input" type="checkbox" id="same-address">
                 <label class="form-check-label" for="same-address">
                   Same as default address
                 </label>
@@ -85,5 +85,22 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+<script>
+                document.getElementById('same-address').onchange = function() {
+                    console.log('Checkbox checked:', document.getElementById('same-address').checked);
+                    if (document.getElementById('same-address').checked) {
+                        console.log('Setting address:', '{{ personal_detail.address1 }}');
+                        document.getElementById('address').value = '{{ personal_detail.address1 }}, {{ personal_detail.address2}}';
+                        document.getElementById('city').value = '{{ personal_detail.city }}';
+                        document.getElementById('state').value = '{{ personal_detail.state }}';
+                        document.getElementById('country').value = '{{ personal_detail.country }}';
+                    }else{
+                        document.getElementById('address').value = '';
+                        document.getElementById('city').value = '';
+                        document.getElementById('state').value ='';
+                        document.getElementById('country').value = '';
+                    }
+                };
+</script>
 
 {% endblock content %}
