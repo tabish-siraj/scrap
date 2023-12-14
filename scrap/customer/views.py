@@ -1,5 +1,6 @@
 from django.db import transaction
 from django.shortcuts import render
+from django.db.models import Sum
 from users.models import User, PersonalDetails
 from main.models import Appointment, Material,Order
 
@@ -11,21 +12,30 @@ def customer_index(request):
     appointments = Appointment.objects.filter(customer=request.user)
 
     res = []
+   
     for appointment in appointments:
         orders = Order.objects.filter(appointment=appointment).order_by('-created_at')
+        total_amount = orders.aggregate(Sum('amount'))['amount__sum'] or 0
+        orders_data = []
         for order in orders:
-            res.append({
+            order_data = {
+                "material": order.material.name,
+                "quantity": order.quantity,
+                "actual_amount": order.actual_quantity,
+                "price": order.amount,
+            }
+            orders_data.append(order_data)
+        appt = {
                 "id": appointment.id,
                 "description": appointment.description,
                 "date": appointment.date,
                 "time": appointment.time,
                 "address": appointment.address,
-                "material": order.material.name,
-                "unit": order.material.unit,
-                "quantity": order.quantity,
-                "amount": order.amount,
                 "status": appointment.status,
-            })
+                "amount": total_amount,
+                "orders": orders_data
+            }
+        res.append(appt)
 
     context = {
         "appointments": res
