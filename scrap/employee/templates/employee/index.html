@@ -2,5 +2,71 @@
 {% load static %}
 
 {% block content %}
-Employee Dashboard
+
+<div class="container">
+    <h2>Appointments and Orders Table</h2>
+    <table class="table table-bordered table-warning table-hover">
+        <thead>
+            <tr>
+                <th>Appt. ID</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Address</th>
+                <th>Amount</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in appointments %}
+            <tr data-bs-toggle="modal" data-bs-target="#orderModal{{ appointment.id }}">
+                <td>{{ appointment.id }}</td>
+                <td>{{ appointment.description }}</td>
+                <td>{{ appointment.date }}</td>
+                <td>{{ appointment.time }}</td>
+                <td>{{ appointment.address }}</td>
+                <td>{{ appointment.amount }}</td>
+                <td>{{ appointment.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Modal for order details -->
+    {% for appointment in appointments %}
+    <div class="modal fade" id="orderModal{{ appointment.id }}" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="orderModalLabel">Order Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5>Order Items for Appointment: {{ appointment.id }}</h5>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Material</th>
+                                <th>Quantity</th>
+                                <th>Actual Amount</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in appointment.orders %}
+                            <tr>
+                                <td>{{ order.material }}</td>
+                                <td>{{ order.quantity }}</td>
+                                <td>{{ order.assessed_amount }}</td>
+                                <td>{{ order.price }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock content %}

@@ -48,8 +48,9 @@
                             <tr>
                                 <th>Material</th>
                                 <th>Quantity</th>
-                                <th>Actual Amount</th>
+                                <th>Assessed Quantity</th>
                                 <th>Price</th>
+                                <th>Assessed Quantity</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,8 +59,8 @@
                                 <td>{{ order.material }}</td>
                                 <td>{{ order.quantity }}</td>
                                 <td>{{ order.assessed_quantity }}</td>
-                                <td>{{ order.price }}</td>
                                 <td>{{ order.assessed_amount }}</td>
+                                <td>{{ order.price }}</td>
                             </tr>
                             {% endfor %}
                         </tbody>

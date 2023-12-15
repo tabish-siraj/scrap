@@ -2,7 +2,7 @@ from django.db import transaction
 from django.shortcuts import render
 from django.db.models import Sum
 from users.models import User, PersonalDetails
-from main.models import Appointment, Material,Order
+from main.models import Appointment, Material,Order, AppointmentStatus
 
 
 
@@ -21,7 +21,7 @@ def customer_index(request):
             order_data = {
                 "material": order.material.name,
                 "quantity": order.quantity,
-                "actual_amount": order.actual_quantity,
+                "assessed_quantity": order.assessed_quantity,
                 "price": order.amount,
             }
             orders_data.append(order_data)
@@ -116,7 +116,8 @@ def create_appointment(request):
                     contact=contact,
                     description=description,
                     date=date,
-                    time=time
+                    time=time,
+                    status=AppointmentStatus.ACTIVE.value
                 )
 
                 orders = []

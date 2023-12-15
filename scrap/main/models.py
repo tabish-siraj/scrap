@@ -8,7 +8,7 @@ from enum import Enum
 class AppointmentStatus(Enum):
     ACTIVE = "active"
     ACCEPTED = "accepted"
-    COMPLETED = "COMPLETED"
+    COMPLETED = "completed"
     REJECTED = "rejected"
 
 class MaterialUnits(Enum):
@@ -43,8 +43,9 @@ class Appointment(TimestampedModel):
 class Order(TimestampedModel):
     material = models.ForeignKey(Material, on_delete=models.CASCADE)
     quantity = models.FloatField()
-    actual_quantity = models.FloatField()    
+    assessed_quantity = models.FloatField()    
     amount = models.FloatField()
+    assessed_amount = models.FloatField()
     appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE)
 
 class Payment(TimestampedModel):
