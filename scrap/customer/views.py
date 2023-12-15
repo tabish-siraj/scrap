@@ -22,7 +22,8 @@ def customer_index(request):
                 "material": order.material.name,
                 "quantity": order.quantity,
                 "assessed_quantity": order.assessed_quantity,
-                "price": order.amount,
+                "amount": order.amount,
+                "assessed_amount": order.assessed_amount,
             }
             orders_data.append(order_data)
         appt = {

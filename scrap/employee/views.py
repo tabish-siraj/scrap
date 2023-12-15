@@ -73,7 +73,7 @@ def employee_appointments(request):
                 "material": order.material.name,
                 "quantity": order.quantity,
                 "assessed_quantity": order.assessed_quantity,
-                "price": order.amount,
+                "amount": order.amount,
             }
             orders_data.append(order_data)
         appt = {
