@@ -34,7 +34,7 @@ class User(AbstractUser):
     objects = UserManager()
 
     def __str__(self):
-        return self.email
+        return f"{self.email} ({self.user_type})"
     
     def is_customer(self):
         return self.user_type == UserType.CUSTOMER.value

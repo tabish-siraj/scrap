@@ -1,7 +1,7 @@
 from django.db import transaction
 from django.shortcuts import render
 from django.db.models import Sum
-from users.models import User, PersonalDetails
+from users.models import User, PersonalDetails, UserType
 from main.models import Appointment, Material,Order, AppointmentStatus
 
 
@@ -108,8 +108,15 @@ def create_appointment(request):
                 date = request.POST['date']
                 time = request.POST['time']
 
+                if not customer or not address or not city or not state or not country or not contact or not description or not date or not time:
+                    context['error'] = "Please fill all the fields"
+                    return render(request, 'customer/create_appointment.html', context)
+                
+                employee = User.objects.filter(user_type=UserType.EMPLOYEE.value).order_by('?').first()
+
                 appointment = Appointment.objects.create(
                     customer=customer,
+                    employee=employee,
                     address=address,
                     city=city,
                     state=state,
@@ -134,14 +141,11 @@ def create_appointment(request):
                         amount=amount
                     )
                     orders.append(order)
-                # order = Order.objects.bulk_create(orders)
+            if  appointment is not None and len(orders) > 0:
+                context['success'] = "Appointment created successfully"
     except Exception as e:
         print(str(e))
         context['error'] = "Something went wrong"
-    if  appointment is not None and len(orders) > 0:
-        context['success'] = "Appointment created successfully"
-
-
 
     context.update({
         'materials': materials,

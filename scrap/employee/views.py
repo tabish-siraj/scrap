@@ -62,7 +62,8 @@ def employee_edit_profile(request):
     return render(request, 'employee/edit_profile.html', context)
 
 def employee_appointments(request):
-    appointments = Appointment.objects.filter(status=AppointmentStatus.ACTIVE.value)
+    appointments = Appointment.objects.filter(employee=request.user, status=AppointmentStatus.ACTIVE.value)
+    print(AppointmentStatus.ACTIVE.value)
     res = []
     for appointment in appointments:
         orders = Order.objects.filter(appointment=appointment).order_by('-created_at')

@@ -28,7 +28,7 @@ class Material(TimestampedModel):
 
 class Appointment(TimestampedModel):
     customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="customer")
-    employee = models.ForeignKey(User, on_delete=models.CASCADE, related_name="employee")
+    employee = models.ForeignKey(User, on_delete=models.CASCADE, related_name="employee", blank=True, null=True)
     address = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
@@ -43,9 +43,9 @@ class Appointment(TimestampedModel):
 class Order(TimestampedModel):
     material = models.ForeignKey(Material, on_delete=models.CASCADE)
     quantity = models.FloatField()
-    assessed_quantity = models.FloatField()    
+    assessed_quantity = models.FloatField(blank=True, null=True)    
     amount = models.FloatField()
-    assessed_amount = models.FloatField()
+    assessed_amount = models.FloatField(blank=True, null=True)
     appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE)
 
 class Payment(TimestampedModel):

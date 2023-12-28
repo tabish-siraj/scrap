@@ -38,15 +38,9 @@ input[type="checkbox"]:checked {
   color: #fff;
 }
 
-.btn-second:hover {
-  color: #FFF !important;
-  background-color: #78824d !important;
-  /* border-color: #78824d; */
-}
-.btn-second:active {
-  color: #FFF !important;
-  background-color: #78824d !important;
-  /* border-color: #78824d; */
+.btn-second:active, .btn-second:focus, .btn-second:hover {
+  color: #FFF;
+  background-color: #78824d;
 }
 
 .form-select{
@@ -167,14 +161,14 @@ a.dropdown-item:hover, a.dropdown-item:focus{
   background-color: transparent;
 }
 .section.pricing table tr td{
-  color: #FFF;
+  color: #FFF !important;
   background-color: transparent;
 }
 
 /* ACCORDION */
 
 .accordion-button {
-  background-color: #93b163; 
+  background-color: #24382C; 
   color: #FFE;
 }
 
@@ -201,15 +195,14 @@ a.dropdown-item:hover, a.dropdown-item:focus{
 }
 
 .table-transparent {
-  background-color: transparent !important;
-  color: #81a448 !important;
+  background-color: transparent;
+  color: #81a448;
 
 }
 
 .table-transparent th,
 .table-transparent td {
-  /* background-color: rgba(255, 255, 255, 0.5) !important; Adjust the alpha value (fourth parameter) for transparency */
-  background-color: transparent !important; /* Adjust the alpha value (fourth parameter) for transparency */
-  color: #81a448 !important;
+  background-color: transparent;
+  color: #81a448;
 
 }
