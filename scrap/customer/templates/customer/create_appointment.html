@@ -89,7 +89,6 @@
                 document.getElementById('same-address').onchange = function() {
                     console.log('Checkbox checked:', document.getElementById('same-address').checked);
                     if (document.getElementById('same-address').checked) {
-                        console.log('Setting address:', '{{ personal_detail.address1 }}');
                         document.getElementById('address').value = '{{ personal_detail.address1 }}, {{ personal_detail.address2}}';
                         document.getElementById('city').value = '{{ personal_detail.city }}';
                         document.getElementById('state').value = '{{ personal_detail.state }}';

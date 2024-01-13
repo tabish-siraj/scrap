@@ -1,11 +1,46 @@
 from django.shortcuts import render
-from main.models import Order, Appointment, Payment, Material, AppointmentStatus
+from main.models import Order, Appointment, Material, AppointmentStatus
 from users.models import User, PersonalDetails, VehicleType
 from django.db.models import Sum
+from django.db import transaction
 
 # Create your views here.
 def employee_index(request):
-    return render(request, 'employee/index.html')
+    res = []
+    appointments = Appointment.objects.filter(employee=request.user)
+    
+    for appointment in appointments:
+        orders_obj = []
+        orders = Order.objects.filter(appointment=appointment)
+        total_amount = orders.aggregate(Sum('assessed_amount'))['assessed_amount__sum'] or 0
+        for order in orders:
+            order_data = {
+                "id": order.id,
+                "material": order.material.name,
+                "rate": order.material.rate,
+                "quantity": order.quantity,
+                "assessed_quantity": order.assessed_quantity,
+                "amount": order.amount,
+                "assessed_amount": order.assessed_amount
+            }
+            orders_obj.append(order_data)
+        appt = {
+            "id": appointment.id,
+            "description": appointment.description,
+            "date": appointment.date,
+            "time": appointment.time,
+            "address": appointment.address,
+            "total_amount": total_amount,
+            "status": appointment.status,
+            "orders": orders_obj,
+        }
+        res.append(appt)
+
+    context = {
+        "appointments": res
+    }
+    print(context)
+    return render(request, 'employee/index.html', context)
 
 def employee_edit_profile(request):
     context = {}
@@ -63,7 +98,6 @@ def employee_edit_profile(request):
 
 def employee_appointments(request):
     appointments = Appointment.objects.filter(employee=request.user, status=AppointmentStatus.ACTIVE.value)
-    print(AppointmentStatus.ACTIVE.value)
     res = []
     for appointment in appointments:
         orders = Order.objects.filter(appointment=appointment).order_by('-created_at')
@@ -71,10 +105,13 @@ def employee_appointments(request):
         orders_data = []
         for order in orders:
             order_data = {
+                "id": order.id,
                 "material": order.material.name,
+                "rate": order.material.rate,
                 "quantity": order.quantity,
                 "assessed_quantity": order.assessed_quantity,
                 "amount": order.amount,
+                "assessed_amount": order.assessed_amount
             }
             orders_data.append(order_data)
         appt = {
@@ -85,13 +122,44 @@ def employee_appointments(request):
             "address": appointment.address,
             "total_amount": total_amount,
             "status": appointment.status,
-            "orders": orders_data
+            "orders": orders_data,
+            "statuses": [status.value for status in AppointmentStatus]
         }
 
         res.append(appt)
+    if request.method == "POST":
+        with transaction.atomic():
+            appointment_id = request.POST.get('appointment_id')
+            status = request.POST.get('status')
 
+            appointment = Appointment.objects.filter(id=appointment_id).first()
+            if not appointment:
+                return render(request, 'employee/appointment.html', {'error': 'Invalid appointment id'})
+            
+            appointment.status = status
+            appointment.save()
+
+            # Process order data
+            orders = []
+            for order in request.POST:
+                if order.startswith('assessed_quantity_'):
+                    material = order.replace('assessed_quantity_', '')
+                    quantity = request.POST.get(order)
+                    order = request.POST.get(f'order_{material}')
+                    order_id = order.split('_')[1]
+                    rate = request.POST.get(f'rate_{material}')
+
+                    orders.append({'material': material, 'quantity': quantity, 'order_id': order_id, "rate": rate})
+            for o in orders:
+                order = Order.objects.filter(id=o['order_id']).first()
+                if not order:
+                    return render(request, 'employee/appointment.html', {'error': 'Invalid order id'})
+                order.assessed_quantity = o['quantity']
+                amount = float(o['quantity']) * float(o['rate'])
+                order.assessed_amount = amount
+
+                order.save()
     context = {
         'appointments': res
     }
-    print(context)
     return render(request, 'employee/appointment.html', context)

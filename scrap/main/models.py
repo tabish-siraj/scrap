@@ -8,7 +8,6 @@ from enum import Enum
 class AppointmentStatus(Enum):
     ACTIVE = "active"
     ACCEPTED = "accepted"
-    COMPLETED = "completed"
     REJECTED = "rejected"
 
 class MaterialUnits(Enum):
@@ -39,7 +38,8 @@ class Appointment(TimestampedModel):
     time = models.TimeField()
     status = models.CharField(max_length=10, choices=[(tag.name, tag.value) for tag in AppointmentStatus], default=AppointmentStatus.ACTIVE.value)
 
-
+    def __str__(self):
+        return f"{self.customer} - {self.employee}"
 class Order(TimestampedModel):
     material = models.ForeignKey(Material, on_delete=models.CASCADE)
     quantity = models.FloatField()
@@ -48,10 +48,15 @@ class Order(TimestampedModel):
     assessed_amount = models.FloatField(blank=True, null=True)
     appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE)
 
-class Payment(TimestampedModel):
-    amount = models.FloatField()
-    appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE)
-    status = models.BooleanField(default=False)
-    received_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="received_by")
-    confirmed_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="confirmed_by")
+    def __str__(self):
+        return f"{self.material} - {self.quantity}"
 
+class ContactUs(TimestampedModel):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    city = models.CharField(max_length=50)
+    contact = models.CharField(max_length=13)
+    message = models.TextField()
+    
+    def __str__(self):
+        return self.email
