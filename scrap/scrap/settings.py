@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-3b86#r=ld=0g0a$fv*d3f+v9bzk+1uc55nhyseqm$2y$sh(7&)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'https://scrap-one.vercel.app/', 'https://scrap-usamaafridis-projects.vercel.app/']
 
 AUTH_USER_MODEL = 'users.User'
 
