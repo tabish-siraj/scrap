@@ -27,6 +27,9 @@ SECRET_KEY = 'django-insecure-3b86#r=ld=0g0a$fv*d3f+v9bzk+1uc55nhyseqm$2y$sh(7&)
 DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'https://scrap-one.vercel.app/', 'https://scrap-usamaafridis-projects.vercel.app/']
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
 
 AUTH_USER_MODEL = 'users.User'
 
