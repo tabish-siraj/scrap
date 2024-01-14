@@ -527,6 +527,11 @@
         </div>
         <div class="row">
             <div class="col-12">
+                {% if success %}
+                <div class="alert alert-success" role="alert">
+                    {{ success }}
+                </div>
+                {% endif %}
                 <form method="POST" name="contact" class="p-5 mb-3 shadow">
                     {% csrf_token %}
                     <div class="row">

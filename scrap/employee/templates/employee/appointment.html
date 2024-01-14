@@ -35,7 +35,7 @@
     <!-- Modal for order details -->
     {% for appointment in appointments %}
     <div class="modal fade" id="orderModal{{ appointment.id }}" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="orderModalLabel">Order Details</h5>
@@ -43,6 +43,46 @@
                 </div>
                 <div class="modal-body">
                     <h5>Order Items for Appointment: {{ appointment.id }}</h5>
+                    {% if appointment.status == 'active' %}
+                    <form method="POST">
+                        {% csrf_token %}
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Material</th>
+                                    <th>Received Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <input type="hidden" name="appointment_id" value="{{ appointment.id }}">
+                                {% for order in appointment.orders %}
+                                <tr>
+                                    <td>{{ order.material }}</td>
+                                    <input type="hidden" name="order_{{ order.material }}" value="{{order.material}}_{{ order.id }}">
+                                    <input type="hidden" name="rate_{{ order.material }}" value="{{ order.rate }}">
+
+                                    <td>
+                                        <input type="text" class="form-control quantity-input" 
+                                               name="assessed_quantity_{{ order.material }}" 
+                                               id="assessed_quantity_{{ order.material }}">
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td>Status:</td>
+                                    <td>
+                                        <select name="status" id="">
+                                            {% for status in appointment.statuses %}
+                                            <option value="{{ status }}">{{ status }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <input type="submit" value="Submit" class="btn btn-secondary float-end">
+                    </form>                    
+                    {% else %}
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -50,7 +90,7 @@
                                 <th>Quantity</th>
                                 <th>Assessed Quantity</th>
                                 <th>Amount</th>
-                                <th>Assessed Quantity</th>
+                                <th>Assessed Amount</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -59,12 +99,14 @@
                                 <td>{{ order.material }}</td>
                                 <td>{{ order.quantity }}</td>
                                 <td>{{ order.assessed_quantity }}</td>
-                                <td>{{ order.assessed_amount }}</td>
                                 <td>{{ order.amount }}</td>
+                                <td>{{ order.assessed_amount }}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
                     </table>
+                    <p>No orders found for this appointment.</p>
+                    {% endif %}
                 </div>
             </div>
         </div>
